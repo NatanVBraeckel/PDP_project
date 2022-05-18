@@ -1,15 +1,24 @@
 <template>
-  <div>
+  <div id="gerechtenView">
 
     <h1>Gerechten</h1>
-    <GerechtenLus :gerechten="gerechten" :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie" />
+    <GerechtenLus :gerechten="gerechten" :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie"
+                  @toggleFavorite="toggleFavorite"/>
 
-    <button class="toggleFilter" @click="toggleFilter" v-if="!showFilter && !showNieuwGerecht">Filter gebruiken</button>
-    <GerechtenFilter @changeRijst="toggleRijst" @changePasta="togglePasta" @changeVeggie="toggleVeggie" @changeFilter="toggleFilter"
-                     :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie" :showFilter="showFilter" />
+    <button class="toggleFilter" @click="toggleFilter" v-if="!showNieuwGerecht && !showFilter && !showRemove">Filter gebruiken</button>
+    <GerechtenFilter @changeRijst="toggleRijst" @changePasta="togglePasta" @changeVeggie="toggleVeggie"
+                     @changeFilter="toggleFilter"
+                     :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie" :showFilter="showFilter"/>
 
-    <button class="toggleNieuwGerecht" @click="toggleNieuwGerecht" v-if="!showNieuwGerecht && !showFilter">Nieuw Gerecht</button>
-    <NieuwGerecht @changeNieuwGerecht="toggleNieuwGerecht" @nieuwGerecht="voegNieuwGerechtToe" :showNieuwGerecht="showNieuwGerecht" />
+    <button class="toggleNieuwGerecht" @click="toggleNieuwGerecht" v-if="!showNieuwGerecht && !showFilter && !showRemove">Nieuw
+      Gerecht
+    </button>
+    <NieuwGerecht @changeNieuwGerecht="toggleNieuwGerecht" @nieuwGerecht="voegNieuwGerechtToe"
+                  :showNieuwGerecht="showNieuwGerecht"/>
+
+    <button class="toggleRemove" @click="toggleRemove" v-if="!showNieuwGerecht && !showFilter && !showRemove">Verwijder Gerecht</button>
+    <RemoveGerecht v-if="showRemove" @changeRemove="toggleRemove" :gerechten="gerechten" @removeGerecht="removeGerecht"
+    @removeGerechtTwee="removeGerecht"/>
 
   </div>
 </template>
@@ -18,71 +27,29 @@
 import GerechtenLus from "@/components/GerechtenLus";
 import GerechtenFilter from "@/components/GerechtenFilter";
 import NieuwGerecht from "@/components/NieuwGerecht";
+import RemoveGerecht from "@/components/RemoveGerecht";
 
 export default {
   name: 'GerechtenView',
   components: {
     GerechtenLus,
     GerechtenFilter,
-    NieuwGerecht
+    NieuwGerecht,
+    RemoveGerecht
+  },
+  props: {
+    gerechten: {
+      type: Array,
+    }
   },
   data() {
     return {
       showFilter: false,
       showNieuwGerecht: false,
+      showRemove: false,
       showRijst: true,
       showPasta: true,
-      showVeggie: false,
-      gerechten: [
-        {
-          name: 'Rijst met italiaanse saus',
-          ingredienten: [
-            'rijst', 'italiaanse saus', 'mozeralla', 'drie kleuren paprika',
-          ],
-          image: {
-            src: require('../assets/crossiant.jpg'),
-            alt: 'rijstmetsaus'
-          },
-          isVeggie: true,
-          categorie: 'rijst'
-        },
-        {
-          name: 'Rijst met zoetzure saus',
-          ingredienten: [
-            'rijst', 'zoetzure saus', 'kip stukjes'
-          ],
-          image: {
-            src: require('../assets/crossiant.jpg'),
-            alt: 'rijstmetsaus'
-          },
-          isVeggie: false,
-          categorie: 'rijst'
-        },
-        {
-          name: 'Chili con carne',
-          ingredienten: [
-            'farfalle', 'bonen in tomatensaus', 'nog tomatensaus', 'gele paprika', 'gehakt'
-          ],
-          image: {
-            src: require('../assets/crossiant.jpg'),
-            alt: 'chili con carne'
-          },
-          isVeggie: false,
-          categorie: 'pasta'
-        },
-        {
-          name: 'Rigatoni met aubergine parmezaanse kaas',
-          ingredienten: [
-            'rigatoni', 'tomatensaus', 'aubergine', 'rode paprika', 'parmezaanse kaas',
-          ],
-          image: {
-            src: require('../assets/crossiant.jpg'),
-            alt: 'rigatoni met aubergine'
-          },
-          isVeggie: true,
-          categorie: 'pasta'
-        }
-      ]
+      showVeggie: false
     }
   },
   methods: {
@@ -91,6 +58,9 @@ export default {
     },
     toggleNieuwGerecht() {
       this.showNieuwGerecht = !this.showNieuwGerecht
+    },
+    toggleRemove() {
+      this.showRemove = !this.showRemove
     },
     toggleRijst() {
       this.showRijst = !this.showRijst
@@ -105,29 +75,69 @@ export default {
       let nieuwGerecht = {
         name: payload.naam,
         ingredienten: payload.ingredienten,
-        image: {src: require('../assets/crossiant.jpg'), alt: 'test'},
+        image: {src: require('../assets/potlogo.svg'), alt: 'test'},
         isVeggie: payload.isVeggie,
-        categorie: payload.categorie
+        categorie: payload.categorie,
+        isFavorite: false
       };
-      this.gerechten.push(nieuwGerecht);
+      this.$emit('nieuwGerecht', {gerechtToeTeVoegen: nieuwGerecht})
+    },
+    removeGerecht(payload) {
+      this.$emit('removeGerecht', {nameToBeRemoved: payload.nameToBeRemoved})
+    },
+    toggleFavorite(payload) {
+      const nameToFavorite = payload.nameToFavorite
+      console.log('name to fav:' + nameToFavorite)
+      this.gerechten.forEach((Object) => {
+        console.log(Object.name)
+        if (Object.name === nameToFavorite) {
+          console.log(Object)
+          Object.isFavorite = !Object.isFavorite
+        }
+      })
     }
-  }
+  },
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-.toggleFilter {
-  padding: 5px;
-  position: absolute;
-  top: 11px;
-  right: 130px;
+#gerechtenView {
+  position: relative;
+
+  h1 {
+    font-size: 2.25em;
+    margin-bottom: 10px;
+    border-bottom: 4px solid #402E32;
+  }
+
+  button {
+    border-radius: 8px;
+    padding: 10px;
+    top: -10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    &:hover {
+      border-color: #FF6900;
+      box-shadow: 0 0 5px #FF6900;
+    }
+  }
+  .toggleFilter {
+    position: absolute;
+    right: 308px;
+  }
+
+  .toggleNieuwGerecht {
+    position: absolute;
+    right: 170px;
+  }
+
+  .toggleRemove {
+    position: absolute;
+    right: 10px;
+  }
 }
 
-.toggleNieuwGerecht {
-  padding: 5px;
-  position: absolute;
-  top: 11px;
-  right: 15px;
-}
+
 </style>
