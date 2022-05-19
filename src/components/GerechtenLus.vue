@@ -19,6 +19,8 @@
       </div>
 
     </section>
+
+    <slot></slot>
   </div>
 </template>
 
@@ -34,6 +36,12 @@ export default {
     showRijst: Boolean,
     showPasta: Boolean,
     showVeggie: Boolean,
+    confirmBijFavorite: Boolean,
+  },
+  data() {
+    return {
+      confirmName: ''
+    }
   },
   computed: {
     filteredGerechten() {
@@ -48,7 +56,11 @@ export default {
   },
   methods: {
     toggleFavorite(name) {
-      this.$emit('toggleFavorite', {nameToFavorite: name})
+      if (this.confirmBijFavorite === false) {
+        this.$emit('toggleFavorite', {nameToFavorite: name})
+      } else {
+        this.$emit('confirmFavorite', {confirmName: name})
+      }
     }
   }
 }

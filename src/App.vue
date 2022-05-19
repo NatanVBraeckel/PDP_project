@@ -6,7 +6,7 @@
       <router-link to="/gerechten">Gerechten</router-link> |
       <router-link to="/favorieten">Favorieten</router-link>
     </nav>
-    <router-view :gerechten="gerechten" @nieuwGerecht="voegGerechtToe" @removeGerecht="removeGerecht"/>
+    <router-view :gerechten="gerechten" @nieuwGerecht="voegGerechtToe" @removeGerecht="removeGerecht" @unfavoriteGerecht="removeFavorite"/>
   </div>
 </template>
 
@@ -92,6 +92,21 @@ export default {
     removeGerecht(payload) {
       this.gerechten = this.gerechten.filter(function(gerecht) {
         return gerecht.name !== payload.nameToBeRemoved;
+      })
+    },
+    removeFavorite(payload) {
+      this.gerechten.forEach((Object) => {
+        if (Object.name === payload.naamGerecht) {
+          Object.isFavorite = false
+        }
+      })
+    },
+    toggleFavorite(payload) {
+      const nameToFavorite = payload.nameToFavorite
+      this.gerechten.forEach((Object) => {
+        if (Object.name === nameToFavorite) {
+          Object.isFavorite = !Object.isFavorite
+        }
       })
     }
   }

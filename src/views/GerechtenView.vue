@@ -3,7 +3,7 @@
 
     <h1>Gerechten</h1>
     <GerechtenLus :gerechten="gerechten" :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie"
-                  @toggleFavorite="toggleFavorite"/>
+                  @toggleFavorite="toggleFavorite" :confirm-bij-favorite="false"/>
 
     <button class="toggleFilter" @click="toggleFilter" v-if="!showNieuwGerecht && !showFilter && !showRemove">Filter gebruiken</button>
     <GerechtenFilter @changeRijst="toggleRijst" @changePasta="togglePasta" @changeVeggie="toggleVeggie"
@@ -86,11 +86,8 @@ export default {
     },
     toggleFavorite(payload) {
       const nameToFavorite = payload.nameToFavorite
-      console.log('name to fav:' + nameToFavorite)
       this.gerechten.forEach((Object) => {
-        console.log(Object.name)
         if (Object.name === nameToFavorite) {
-          console.log(Object)
           Object.isFavorite = !Object.isFavorite
         }
       })

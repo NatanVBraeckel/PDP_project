@@ -36,7 +36,7 @@ export default {
     },
     removeGerecht(payload) {
       this.$emit('removeGerecht', {
-        nameToBeRemoved: payload.teVerwijderen
+        nameToBeRemoved: payload.dingAanTePassen
       })
       this.showConfirmation = false
       this.gerechtTeVerwijderen = ''

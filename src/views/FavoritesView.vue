@@ -1,21 +1,31 @@
 <template>
   <div>
     <h1>Favoriete gerechten</h1>
-    <GerechtenLus :gerechten="favoriteGerechten" :showRijst="true" :showPasta="true" :showVeggie="false"
-                  @toggleFavorite="toggleFavorite"/>
+    <GerechtenLus :gerechten="favoriteGerechten" :showRijst="true" :showPasta="true" :showVeggie="false" :confirm-bij-favorite="true"
+                  @toggleFavorite="toggleFavorite" @confirmFavorite="confirmFavorite">
+      <ConfirmationMenu :zin="confirmName + ' uit de favorietenlijst halen?'" :ding-aan-te-passen="confirmName" :show-confirmation="showConfirmation" @confirmationOff="confirmOff" @confirmRemove="removeFavorite"/>
+    </GerechtenLus>
   </div>
 
 </template>
 
 <script>
 import GerechtenLus from "@/components/GerechtenLus";
+import ConfirmationMenu from "@/components/ConfirmationMenu";
+
 export default {
   name: "FavoritesView",
-  components: {GerechtenLus},
+  components: {GerechtenLus, ConfirmationMenu},
   props: {
     gerechten: {
       type: Array,
       required: true
+    }
+  },
+  data () {
+    return {
+      confirmName: '',
+      showConfirmation: false
     }
   },
   computed: {
@@ -24,8 +34,7 @@ export default {
       this.gerechten.forEach((gerecht) => {
         if (gerecht.isFavorite === true) {
           lijst.push(gerecht)
-        }
-        else {
+        } else {
           console.log('huh')
         }
       })
@@ -44,6 +53,20 @@ export default {
           Object.isFavorite = !Object.isFavorite
         }
       })
+    },
+    confirmFavorite(payload) {
+      this.confirmName = payload.confirmName
+      this.showConfirmation = true
+    },
+    confirmOff() {
+      this.showConfirmation = false
+    },
+    removeFavorite(payload) {
+      this.$emit('unfavoriteGerecht', {
+        naamGerecht: payload.dingAanTePassen
+      })
+      this.showConfirmation = false
+      this.confirmName = ''
     }
   }
 }

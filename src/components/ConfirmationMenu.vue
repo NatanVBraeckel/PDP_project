@@ -12,14 +12,14 @@
 export default {
   name: "ConfirmationMenu",
   props: {
-    dingTeVerwijderen: String,
+    dingAanTePassen: String,
     showConfirmation: Boolean,
     zin: String
   },
   methods: {
     confirm() {
       this.$emit('confirmRemove', {
-        teVerwijderen: this.dingTeVerwijderen
+        dingAanTePassen: this.dingAanTePassen
       })
     },
     confirmationOff() {
@@ -39,10 +39,10 @@ export default {
   left: 0;
 
   .confirmationMenu {
+    padding: 15px;
+    max-width: 500px;
     font-family: sans-serif;
     background-color: #eee;
-    width: 25%;
-    height: 15%;
     margin: 15px auto;
     border-radius: 25px;
     border: 3px solid #000;
