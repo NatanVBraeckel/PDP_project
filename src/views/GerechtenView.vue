@@ -17,8 +17,7 @@
                   :showNieuwGerecht="showNieuwGerecht"/>
 
     <button class="toggleRemove" @click="toggleRemove" v-if="!showNieuwGerecht && !showFilter && !showRemove">Verwijder Gerecht</button>
-    <RemoveGerecht v-if="showRemove" @changeRemove="toggleRemove" :gerechten="gerechten" @removeGerecht="removeGerecht"
-    @removeGerechtTwee="removeGerecht"/>
+    <RemoveGerecht v-if="showRemove" @changeRemove="toggleRemove" :gerechten="gerechten" @removeGerecht="removeGerecht"/>
 
   </div>
 </template>

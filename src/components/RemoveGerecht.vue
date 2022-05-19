@@ -7,45 +7,46 @@
                 @click="confirmMenu(gerecht.name)">{{ gerecht.name }}
         </button>
       </div>
-      <div class="zekerMenu" v-if="showZeker">
-        <h2>Ben je zeker dat je {{ gerechtTeVerwijderen }} wilt verwijderen?</h2>
-        <button @click="removeDitGerecht">Ja</button>
-        <button @click="zekerOff">Nee</button>
-      </div>
+      <ConfirmationMenu :zin="gerechtTeVerwijderen + ' definitief verwijderen?'" :dingTeVerwijderen="gerechtTeVerwijderen" :showConfirmation="showConfirmation" @confirmationOff="confirmOff" @confirmRemove="removeGerecht"/>
     </div>
   </div>
 
 </template>
 
 <script>
+import ConfirmationMenu from "@/components/ConfirmationMenu";
+
 export default {
   name: "RemoveGerecht",
   props: {
     gerechten: Array
   },
+  components: {
+    ConfirmationMenu,
+  },
   data() {
     return {
       gerechtTeVerwijderen: '',
-      showZeker: false
+      showConfirmation: false
     }
   },
   methods: {
     removeOff() {
       this.$emit('changeRemove')
     },
-    removeDitGerecht() {
-      this.$emit('removeGerechtTwee', {
-        nameToBeRemoved: this.gerechtTeVerwijderen
+    removeGerecht(payload) {
+      this.$emit('removeGerecht', {
+        nameToBeRemoved: payload.teVerwijderen
       })
-      this.showZeker = false
+      this.showConfirmation = false
       this.gerechtTeVerwijderen = ''
     },
     confirmMenu(name) {
       this.gerechtTeVerwijderen = name
-      this.showZeker = !this.showZeker
+      this.showConfirmation = true
     },
-    zekerOff() {
-      this.showZeker = false
+    confirmOff() {
+      this.showConfirmation = false
       this.gerechtTeVerwijderen = ''
     }
   }
