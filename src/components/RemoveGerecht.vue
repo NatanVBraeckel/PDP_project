@@ -7,7 +7,7 @@
                 @click="confirmMenu(gerecht.name)">{{ gerecht.name }}
         </button>
       </div>
-      <ConfirmationMenu :zin="gerechtTeVerwijderen + ' definitief verwijderen?'" :dingTeVerwijderen="gerechtTeVerwijderen" :showConfirmation="showConfirmation" @confirmationOff="confirmOff" @confirmRemove="removeGerecht"/>
+      <ConfirmationMenu :zin="gerechtTeVerwijderen + ' definitief verwijderen?'" :dingAanTePassen="gerechtTeVerwijderen" :showConfirmation="showConfirmation" @confirmationOff="confirmOff" @confirmAction="removeGerecht"/>
     </div>
   </div>
 
@@ -35,6 +35,7 @@ export default {
       this.$emit('changeRemove')
     },
     removeGerecht(payload) {
+      console.log(payload.dingAanTePassen)
       this.$emit('removeGerecht', {
         nameToBeRemoved: payload.dingAanTePassen
       })

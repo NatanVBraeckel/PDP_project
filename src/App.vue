@@ -90,6 +90,7 @@ export default {
       this.gerechten.push(payload.gerechtToeTeVoegen)
     },
     removeGerecht(payload) {
+      console.log(payload.nameToBeRemoved)
       this.gerechten = this.gerechten.filter(function(gerecht) {
         return gerecht.name !== payload.nameToBeRemoved;
       })

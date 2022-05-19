@@ -3,7 +3,7 @@
     <h1>Favoriete gerechten</h1>
     <GerechtenLus :gerechten="favoriteGerechten" :showRijst="true" :showPasta="true" :showVeggie="false" :confirm-bij-favorite="true"
                   @toggleFavorite="toggleFavorite" @confirmFavorite="confirmFavorite">
-      <ConfirmationMenu :zin="confirmName + ' uit de favorietenlijst halen?'" :ding-aan-te-passen="confirmName" :show-confirmation="showConfirmation" @confirmationOff="confirmOff" @confirmRemove="removeFavorite"/>
+      <ConfirmationMenu :zin="confirmName + ' uit de favorietenlijst halen?'" :ding-aan-te-passen="confirmName" :show-confirmation="showConfirmation" @confirmationOff="confirmOff" @confirmAction="removeFavorite"/>
     </GerechtenLus>
   </div>
 

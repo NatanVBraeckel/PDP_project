@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     confirm() {
-      this.$emit('confirmRemove', {
+      this.$emit('confirmAction', {
         dingAanTePassen: this.dingAanTePassen
       })
     },
@@ -42,7 +42,7 @@ export default {
     padding: 15px;
     max-width: 500px;
     font-family: sans-serif;
-    background-color: #eee;
+    background-color: #efefef;
     margin: 15px auto;
     border-radius: 25px;
     border: 3px solid #000;

@@ -112,7 +112,6 @@ export default {
     padding: 10px;
     top: -10px;
     cursor: pointer;
-    font-family: inherit;
     font-weight: bold;
     &:hover {
       border-color: #FF6900;
