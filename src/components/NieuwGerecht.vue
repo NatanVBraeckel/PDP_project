@@ -13,9 +13,11 @@
           <label for="aantal">Aantal ingredienten: </label>
           <input type="number" id="aantal" min="0" max="10" v-model="aantalIngr">
         </div>
-        <div v-for="n in parseInt(aantalIngr)" :key="n" class="vakje">
-          <label for="ingrVakje">{{ n }}: </label>
-          <input type="text" v-model="nieuweIngredienten[n - 1]" id="ingrVakje">
+        <div class="ingr-list">
+          <div v-for="n in parseInt(aantalIngr)" :key="n" class="vakje">
+            <label for="ingrVakje">{{ n }}: </label>
+            <input type="text" v-model="nieuweIngredienten[n - 1]" id="ingrVakje">
+          </div>
         </div>
       </div>
 
@@ -88,20 +90,17 @@ export default {
 }
 
 .nieuwGerecht {
+  font-family: sans-serif;
   background-color: #eee;
   width: 25%;
   height: 50%;
   margin: 25vh auto;
   border-radius: 25px;
-  border: 3px solid #000;
-  box-shadow: 0 0 15px black;
+  border: 3px solid #402E32;
+  box-shadow: 0 0 15px #402E32;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
-  & > * {
-    margin: 0 auto;
-  }
 
   button {
     border-radius: 15px;
@@ -109,10 +108,30 @@ export default {
     background-color: #fff;
     cursor: pointer;
     transition: background-color 0.25s, color 0.25s;
-
+    margin: 0 auto;
     &:hover {
       background-color: #444;
       color: #fff;
+    }
+  }
+
+  input, select {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+
+  .ingr-list {
+    display: flex;
+    flex-wrap: wrap;
+    .vakje {
+      flex: 0 1 calc(50% - 5px);
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      input {
+        max-width: 150px;
+      }
     }
   }
 }

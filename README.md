@@ -1,6 +1,6 @@
 # PDP project Natan Van Braeckel
 
-**Als je onderstaande stappen volgt na het clonen van de repository moet het normaal gezien in orde zijn.**\
+**Als je onderstaande stappen volgt na het downloaden van de code kan je de app zelf gebruiken**\
 \
 **npm install om alle vue pakketten te downloaden**\
 \

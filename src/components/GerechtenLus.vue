@@ -58,7 +58,7 @@ export default {
 
 section {
   display: flex;
-  border: 6px solid #402E32;
+  border: 4px solid #402E32;
   border-radius: 15px;
   overflow: hidden;
   margin: 3rem 150px;
@@ -69,7 +69,7 @@ section {
     max-width: 300px;
     padding: 10px;
     height: auto;
-    border-right: 5px solid #402E32;
+    border-right: 4px solid #402E32;
   }
 
   .infoVakje {
