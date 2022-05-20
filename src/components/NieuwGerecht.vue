@@ -33,14 +33,18 @@
         <input type="checkbox" v-model="isNieuwGerechtVeggie" id="veg">
       </section>
 
-      <button @click="voegNieuwGerechtToe">Maak nieuw gerecht aan</button>
+      <VueButton tekst="Maak nieuw gerecht aan" @click.native="voegNieuwGerechtToe"/>
+
     </div>
   </div>
 </template>
 
 <script>
+import VueButton from "@/components/VueButton";
+
 export default {
   name: "NieuwGerecht",
+  components: {VueButton},
   props: {
     showNieuwGerecht: Boolean
   },
@@ -93,25 +97,17 @@ export default {
   margin: 20vh auto;
   padding: 15px;
   border-radius: 15px;
-  border: 3px solid #402E32;
-  box-shadow: 0 0 15px #402E32;
+  border: 3px solid #000;
+  box-shadow: 0 0 15px #000;
 
   h2 {
     margin-bottom: 15px;
   }
 
-  button {
-    border-radius: 8px;
-    padding: 10px;
-    top: -10px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 5px;
-    &:hover {
-      border-color: #FF6900;
-      box-shadow: 0 0 5px #FF6900;
-    }
+  #vue-button {
+    margin-top: 15px;
   }
+
   section {
     margin-top: 25px;
   }

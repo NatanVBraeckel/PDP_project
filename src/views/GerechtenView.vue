@@ -5,18 +5,16 @@
     <GerechtenLus :gerechten="gerechten" :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie"
                   @toggleFavorite="toggleFavorite" :confirm-bij-favorite="false"/>
 
-    <button class="toggleFilter" @click="toggleFilter" v-if="!showNieuwGerecht && !showFilter && !showRemove">Filter gebruiken</button>
+    <VueButton tekst="Filter Gebruiken" class="toggleFilter" @click.native="toggleFilter" v-if="!showNieuwGerecht && !showFilter && !showRemove"/>
     <GerechtenFilter @changeRijst="toggleRijst" @changePasta="togglePasta" @changeVeggie="toggleVeggie"
                      @changeFilter="toggleFilter"
                      :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie" :showFilter="showFilter"/>
 
-    <button class="toggleNieuwGerecht" @click="toggleNieuwGerecht" v-if="!showNieuwGerecht && !showFilter && !showRemove">Nieuw
-      Gerecht
-    </button>
+    <VueButton tekst="Nieuw Gerecht" class="toggleNieuwGerecht" @click.native="toggleNieuwGerecht" v-if="!showNieuwGerecht && !showFilter && !showRemove"/>
     <NieuwGerecht @changeNieuwGerecht="toggleNieuwGerecht" @nieuwGerecht="voegNieuwGerechtToe"
                   :showNieuwGerecht="showNieuwGerecht"/>
 
-    <button class="toggleRemove" @click="toggleRemove" v-if="!showNieuwGerecht && !showFilter && !showRemove">Verwijder Gerecht</button>
+    <VueButton class="toggleRemove" @click.native="toggleRemove" v-if="!showNieuwGerecht && !showFilter && !showRemove" tekst="Verwijder Gerecht"/>
     <RemoveGerecht v-if="showRemove" @changeRemove="toggleRemove" :gerechten="gerechten" @removeGerecht="removeGerecht"/>
 
   </div>
@@ -27,6 +25,7 @@ import GerechtenLus from "@/components/GerechtenLus";
 import GerechtenFilter from "@/components/GerechtenFilter";
 import NieuwGerecht from "@/components/NieuwGerecht";
 import RemoveGerecht from "@/components/RemoveGerecht";
+import VueButton from "@/components/VueButton";
 
 export default {
   name: 'GerechtenView',
@@ -34,7 +33,8 @@ export default {
     GerechtenLus,
     GerechtenFilter,
     NieuwGerecht,
-    RemoveGerecht
+    RemoveGerecht,
+    VueButton
   },
   props: {
     gerechten: {
@@ -107,17 +107,6 @@ export default {
     border-bottom: 4px solid #402E32;
   }
 
-  button {
-    border-radius: 8px;
-    padding: 10px;
-    top: -10px;
-    cursor: pointer;
-    font-weight: bold;
-    &:hover {
-      border-color: #FF6900;
-      box-shadow: 0 0 5px #FF6900;
-    }
-  }
   .toggleFilter {
     position: absolute;
     right: 308px;
