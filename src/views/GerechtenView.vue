@@ -2,20 +2,29 @@
   <div id="gerechtenView">
 
     <h1>Gerechten</h1>
+    <ul>
+      <li>
+        <VueButton tekst="Filter Gebruiken" @click.native="toggleFilter"/>
+      </li>
+      <li>
+        <VueButton tekst="Nieuw Gerecht" @click.native="toggleNieuwGerecht"/>
+      </li>
+      <li>
+        <VueButton tekst="Verwijder Gerecht" @click.native="toggleRemove"/>
+      </li>
+    </ul>
     <GerechtenLus :gerechten="gerechten" :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie"
                   @toggleFavorite="toggleFavorite" :confirm-bij-favorite="false"/>
 
-    <VueButton tekst="Filter Gebruiken" class="toggleFilter" @click.native="toggleFilter" v-if="!showNieuwGerecht && !showFilter && !showRemove"/>
     <GerechtenFilter @changeRijst="toggleRijst" @changePasta="togglePasta" @changeVeggie="toggleVeggie"
                      @changeFilter="toggleFilter"
                      :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie" :showFilter="showFilter"/>
 
-    <VueButton tekst="Nieuw Gerecht" class="toggleNieuwGerecht" @click.native="toggleNieuwGerecht" v-if="!showNieuwGerecht && !showFilter && !showRemove"/>
     <NieuwGerecht @changeNieuwGerecht="toggleNieuwGerecht" @nieuwGerecht="voegNieuwGerechtToe"
                   :showNieuwGerecht="showNieuwGerecht"/>
 
-    <VueButton class="toggleRemove" @click.native="toggleRemove" v-if="!showNieuwGerecht && !showFilter && !showRemove" tekst="Verwijder Gerecht"/>
-    <RemoveGerecht v-if="showRemove" @changeRemove="toggleRemove" :gerechten="gerechten" @removeGerecht="removeGerecht"/>
+    <RemoveGerecht v-if="showRemove" @changeRemove="toggleRemove" :gerechten="gerechten"
+                   @removeGerecht="removeGerecht"/>
 
   </div>
 </template>
@@ -107,19 +116,13 @@ export default {
     border-bottom: 4px solid #402E32;
   }
 
-  .toggleFilter {
-    position: absolute;
-    right: 308px;
-  }
-
-  .toggleNieuwGerecht {
-    position: absolute;
-    right: 170px;
-  }
-
-  .toggleRemove {
-    position: absolute;
-    right: 10px;
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 0 10px;
+    }
   }
 }
 
