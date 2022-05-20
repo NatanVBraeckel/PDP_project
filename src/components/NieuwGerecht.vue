@@ -123,7 +123,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     input {
-      flex: 0 1 calc(50% - 10px);
+      max-width: calc(50% - 10px);
       margin: 5px;
     }
   }

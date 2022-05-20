@@ -128,14 +128,14 @@ html {
 }
 
 body {
-  background-color: #FFF6ED;
+  background-color: #fff3e6;
   background-image: url("assets/streep.svg");
   background-repeat: no-repeat;
   background-size: 450px;
 }
 
 #app {
-  padding: 0 50px;
+  padding: 0 15px;
   margin-top: 15px;
   text-align: center;
 }
@@ -152,6 +152,12 @@ nav {
       color: #FF6900;
     }
 
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #app {
+    padding: 0 50px;
   }
 }
 

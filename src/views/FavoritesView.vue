@@ -34,22 +34,16 @@ export default {
       this.gerechten.forEach((gerecht) => {
         if (gerecht.isFavorite === true) {
           lijst.push(gerecht)
-        } else {
-          console.log('huh')
         }
       })
-      console.log(lijst)
       return lijst
     }
   },
   methods: {
     toggleFavorite(payload) {
       const nameToFavorite = payload.nameToFavorite
-      console.log('name to fav:' + nameToFavorite)
       this.gerechten.forEach((Object) => {
-        console.log(Object.name)
         if (Object.name === nameToFavorite) {
-          console.log(Object)
           Object.isFavorite = !Object.isFavorite
         }
       })

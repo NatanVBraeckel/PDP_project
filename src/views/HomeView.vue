@@ -17,15 +17,15 @@
         Dit is een Single Page Application gemaakt met het Vue JavaScript framework.
       </p>
       <p>
-        Soms is het moeilijk om te beslissen wat je vandaag wilt eten, het doel van deze app is om deze keuze
+        Soms is het moeilijk om te beslissen wat je vandaag wilt eten. Het doel van deze app is om deze keuze
         makkelijker te maken door het tonen van een lijst van gerechten.
       </p>
       <p>
         Je kan deze lijst van gerechten zelf samenstellen, door je eigen gerechten toe te voegen en bestaande gerechten te
-        verwijderen naar eigen wil.
+        verwijderen.
       </p>
       <p>
-        Dan is er nog de mogelijkheid om je favoriete gerechten aan te duiden, en deze dan apart te kunnen bekijken
+        Dan is er nog de mogelijkheid om je favoriete gerechten aan te duiden. Deze kan je dan op een aparte pagina bekijken
       </p>
 
       <nav>
@@ -60,11 +60,11 @@ section {
   border-bottom: 2px dotted #000;
   background-color: #fdfdfd;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 15px auto;
   p {
     line-height: 1.5em;
     margin-bottom: 10px;
-    font-size: 1.15em;
+    font-size: 1em;
   }
 
   nav {
