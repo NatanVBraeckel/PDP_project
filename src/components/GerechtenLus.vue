@@ -150,16 +150,12 @@ svg {
   fill:#fff;
 }
 .b{
-  stroke:#231f20;stroke-miterlimit:10;
+  stroke:#402E32;stroke-miterlimit:10;
 }
 
 .favorite {
   .a,.b{
     fill:#fcff5f;
-  }
-  .b{
-    stroke:#231f20;
-    stroke-miterlimit:10;
   }
 }
 </style>

@@ -1,25 +1,24 @@
 <template>
   <div class="backdrop" v-if="showNieuwGerecht" @click.self="nieuwGerechtOff">
     <div class="nieuwGerecht">
+      <h2>Maak nieuw gerecht aan</h2>
 
-      <div>
+      <section>
         <label for="naam">Naam: </label>
         <input type="text" id="naam" v-model="naamNieuwGerecht">
-      </div>
+      </section>
 
 
-      <div>
-        <div class="counter">
+        <section>
           <label for="aantal">Ingrediënten: </label>
-          <input type="number" id="aantal" min="0" max="10" v-model="aantalIngr">
-        </div>
+          <input type="number" id="aantal" min="1" max="10" v-model="aantalIngr">
+        </section>
         <div class="ingr-list">
             <input v-for="n in parseInt(aantalIngr)" :key="n" type="text" v-model="nieuweIngredienten[n - 1]" id="ingrVakje" :placeholder="'ingrediënt ' + n">
         </div>
-      </div>
 
 
-      <div>
+      <section>
         <p>
           Categorie:
           <select name="categorie" id="categorie" v-model="categorieNieuwGerecht">
@@ -27,12 +26,12 @@
             <option value="pasta">pasta</option>
           </select>
         </p>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <label for="veg">Vegetarisch: </label>
         <input type="checkbox" v-model="isNieuwGerechtVeggie" id="veg">
-      </div>
+      </section>
 
       <button @click="voegNieuwGerechtToe">Maak nieuw gerecht aan</button>
     </div>
@@ -89,40 +88,44 @@ export default {
 .nieuwGerecht {
   font-family: sans-serif;
   background-color: #eee;
-  width: 25%;
-  height: 50%;
-  margin: 25vh auto;
-  border-radius: 25px;
+  width: 25vw;
+  max-height: 75vh;
+  margin: 20vh auto;
+  padding: 15px;
+  border-radius: 15px;
   border: 3px solid #402E32;
   box-shadow: 0 0 15px #402E32;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+
+  h2 {
+    margin-bottom: 15px;
+  }
 
   button {
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 10px;
-    background-color: #fff;
+    top: -10px;
     cursor: pointer;
-    transition: background-color 0.25s, color 0.25s;
-    margin: 0 auto;
+    font-weight: bold;
+    margin: 5px;
     &:hover {
-      background-color: #444;
-      color: #fff;
+      border-color: #FF6900;
+      box-shadow: 0 0 5px #FF6900;
     }
+  }
+  section {
+    margin-top: 25px;
   }
 
   input, select {
     padding: 5px;
+    border: 2px solid #402E32;
     border-radius: 5px;
     font-size: 1em;
   }
 
   .ingr-list {
-    height: 200px;
     display: flex;
     flex-wrap: wrap;
-    align-items: start;
     input {
       flex: 0 1 calc(50% - 10px);
       margin: 5px;
