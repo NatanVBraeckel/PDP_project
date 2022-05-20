@@ -95,17 +95,17 @@ export default {
       })
     },
     removeFavorite(payload) {
-      this.gerechten.forEach((Object) => {
-        if (Object.name === payload.naamGerecht) {
-          Object.isFavorite = false
+      this.gerechten.forEach((gerecht) => {
+        if (gerecht.name === payload.naamGerecht) {
+          gerecht.isFavorite = false
         }
       })
     },
     toggleFavorite(payload) {
       const nameToFavorite = payload.nameToFavorite
-      this.gerechten.forEach((Object) => {
-        if (Object.name === nameToFavorite) {
-          Object.isFavorite = !Object.isFavorite
+      this.gerechten.forEach((gerecht) => {
+        if (gerecht.name === nameToFavorite) {
+          gerecht.isFavorite = !gerecht.isFavorite
         }
       })
     }
