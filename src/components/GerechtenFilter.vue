@@ -1,16 +1,19 @@
 <template>
-  <div class="backdrop" v-if="showFilter" @click.self="filterOff">
-    <div class="filter">
-      <button @click="changeShowRijst" class="rijstButton" :class="{ active: showRijst === true }">Rijst</button>
-      <button @click="changeShowPasta" class="pastaButton" :class="{ active: showPasta === true }">Pasta</button>
-      <button @click="changeShowVeggie" class="veggieButton" :class="{ active: showVeggie === true }">Veggie</button>
-    </div>
-  </div>
+  <VueModal text="Filter Gerechten" @modalOff="filterOff">
+    <button @click="changeShowRijst" class="rijstButton" :class="{ active: showRijst === true }">Rijst</button>
+    <button @click="changeShowPasta" class="pastaButton" :class="{ active: showPasta === true }">Pasta</button>
+    <button @click="changeShowVeggie" class="veggieButton" :class="{ active: showVeggie === true }">Veggie</button>
+  </VueModal>
 </template>
 
 <script>
+import VueModal from "@/components/VueModal";
+
 export default {
   name: "GerechtenFilter",
+  components: {
+    VueModal
+  },
   props: {
     showFilter: Boolean,
     showRijst: Boolean,
@@ -35,43 +38,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
+
+button {
+  font-size: 1.5em;
+  min-width: fit-content;
+  width: 60%;
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgba(200, 0, 0, 1);
+  border: 3px solid darkred;
+  border-radius: 15px;
+  &:hover {
+    box-shadow: 0 0 3px black;
+  }
 }
 
-.filter {
-  background-color: #eee;
-  width: 25%;
-  height: 50%;
-  margin: 25vh auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  border-radius: 25px;
-  border: 3px solid #000;
-  box-shadow: 0 0 15px black;
-
-  button {
-    font-size: 2em;
-    width: 90%;
-    margin: 0 auto;
-    flex: 0 1 25%;
-    padding: 10px;
-    cursor: pointer;
-    background-color: rgba(200, 0, 0, 1);
-    border: 3px solid darkred;
-    border-radius: 15px;
-  }
-
-  .active {
-    background-color: limegreen;
-    border-color: darkgreen;
-  }
+.active {
+  background-color: limegreen;
+  border-color: darkgreen;
 }
 
 

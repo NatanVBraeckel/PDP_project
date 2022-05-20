@@ -1,50 +1,47 @@
 <template>
-  <div class="backdrop" v-if="showNieuwGerecht" @click.self="nieuwGerechtOff">
-    <div class="nieuwGerecht">
-      <h2>Maak nieuw gerecht aan</h2>
+  <VueModal text="Nieuw Gerecht" @modalOff="nieuwGerechtOff">
 
-      <section>
-        <label for="naam">Naam: </label>
-        <input type="text" id="naam" v-model="naamNieuwGerecht">
-      </section>
+    <section>
+      <label for="naam">Naam: </label>
+      <input type="text" id="naam" v-model="naamNieuwGerecht">
+    </section>
 
-
-        <section>
-          <label for="aantal">Ingrediënten: </label>
-          <input type="number" id="aantal" min="1" max="10" v-model="aantalIngr">
-        </section>
-        <div class="ingr-list">
-            <input v-for="n in parseInt(aantalIngr)" :key="n" type="text" v-model="nieuweIngredienten[n - 1]" id="ingrVakje" :placeholder="'ingrediënt ' + n">
-        </div>
-
-
-      <section>
-        <p>
-          Categorie:
-          <select name="categorie" id="categorie" v-model="categorieNieuwGerecht">
-            <option value="rijst">rijst</option>
-            <option value="pasta">pasta</option>
-          </select>
-        </p>
-      </section>
-
-      <section>
-        <label for="veg">Vegetarisch: </label>
-        <input type="checkbox" v-model="isNieuwGerechtVeggie" id="veg">
-      </section>
-
-      <VueButton tekst="Maak nieuw gerecht aan" @click.native="voegNieuwGerechtToe"/>
-
+    <section>
+      <label for="aantal">Ingrediënten: </label>
+      <input type="number" id="aantal" min="1" max="10" v-model="aantalIngr">
+    </section>
+    <div class="ingr-list">
+      <input v-for="n in parseInt(aantalIngr)" :key="n" type="text" v-model="nieuweIngredienten[n - 1]" id="ingrVakje" :placeholder="'ingrediënt ' + n">
     </div>
-  </div>
+
+
+    <section>
+      <p>
+        Categorie:
+        <select name="categorie" id="categorie" v-model="categorieNieuwGerecht">
+          <option value="rijst">rijst</option>
+          <option value="pasta">pasta</option>
+        </select>
+      </p>
+    </section>
+
+    <section>
+      <label for="veg">Vegetarisch: </label>
+      <input type="checkbox" v-model="isNieuwGerechtVeggie" id="veg">
+    </section>
+
+    <VueButton tekst="Maak nieuw gerecht aan" @click.native="voegNieuwGerechtToe"/>
+  </VueModal>
+
 </template>
 
 <script>
 import VueButton from "@/components/VueButton";
+import VueModal from "@/components/VueModal";
 
 export default {
   name: "NieuwGerecht",
-  components: {VueButton},
+  components: {VueButton, VueModal},
   props: {
     showNieuwGerecht: Boolean
   },
@@ -80,29 +77,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.nieuwGerecht {
-  font-family: sans-serif;
-  background-color: #eee;
-  width: 25vw;
-  max-height: 75vh;
-  margin: 20vh auto;
-  padding: 15px;
-  border-radius: 15px;
-  border: 3px solid #000;
-  box-shadow: 0 0 15px #000;
-
-  h2 {
-    margin-bottom: 15px;
-  }
 
   #vue-button {
     margin-top: 15px;
@@ -127,5 +101,4 @@ export default {
       margin: 5px;
     }
   }
-}
 </style>

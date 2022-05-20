@@ -17,10 +17,10 @@
                   @toggleFavorite="toggleFavorite" :confirm-bij-favorite="false"/>
 
     <GerechtenFilter @changeRijst="toggleRijst" @changePasta="togglePasta" @changeVeggie="toggleVeggie"
-                     @changeFilter="toggleFilter"
+                     @changeFilter="toggleFilter" v-if="showFilter"
                      :showRijst="showRijst" :showPasta="showPasta" :showVeggie="showVeggie" :showFilter="showFilter"/>
 
-    <NieuwGerecht @changeNieuwGerecht="toggleNieuwGerecht" @nieuwGerecht="voegNieuwGerechtToe"
+    <NieuwGerecht v-if="showNieuwGerecht" @changeNieuwGerecht="toggleNieuwGerecht" @nieuwGerecht="voegNieuwGerechtToe"
                   :showNieuwGerecht="showNieuwGerecht"/>
 
     <RemoveGerecht v-if="showRemove" @changeRemove="toggleRemove" :gerechten="gerechten"
