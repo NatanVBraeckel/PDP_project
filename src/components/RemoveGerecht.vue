@@ -3,9 +3,7 @@
     <div class="removeField">
       <h2>Welk gerecht wil je verwijderen?</h2>
       <div class="button-list">
-        <button v-for="gerecht in gerechten" :key="gerecht"
-                @click="confirmMenu(gerecht.name)">{{ gerecht.name }}
-        </button>
+        <VueButton :tekst="gerecht.name" v-for="gerecht in gerechten" :key="gerecht" @click.native="confirmMenu(gerecht.name)"/>
       </div>
       <ConfirmationMenu :zin="gerechtTeVerwijderen + ' definitief verwijderen?'" :dingAanTePassen="gerechtTeVerwijderen" :showConfirmation="showConfirmation" @confirmationOff="confirmOff" @confirmAction="removeGerecht"/>
     </div>
@@ -15,6 +13,7 @@
 
 <script>
 import ConfirmationMenu from "@/components/ConfirmationMenu";
+import VueButton from "@/components/VueButton";
 
 export default {
   name: "RemoveGerecht",
@@ -23,6 +22,7 @@ export default {
   },
   components: {
     ConfirmationMenu,
+    VueButton
   },
   data() {
     return {
@@ -67,29 +67,26 @@ export default {
 .removeField {
   font-family: sans-serif;
   background-color: #eee;
-  width: 25%;
-  height: 50%;
+  padding: 15px;
+  width: 25vw;
+  max-height: 75vh;
   margin: 25vh auto;
   border-radius: 25px;
   border: 3px solid #000;
-  box-shadow: 0 0 15px black;
+  box-shadow: 0 0 15px #000;
   overflow: auto;
 
   h2 {
-    margin: 15px;
+    margin-bottom: 15px;
   }
 
   .button-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    button {
+    #vue-button {
       flex: 0 1 75%;
-      padding: 5px;
-      border-radius: 5px;
       margin: 5px;
-      cursor: pointer;
-      font-size: 1em;
     }
   }
 }

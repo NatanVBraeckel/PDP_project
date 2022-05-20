@@ -2,15 +2,20 @@
   <div class="backdrop" @click="confirmationOff" v-if="showConfirmation">
     <div class="confirmationMenu">
       <h3>{{ zin }}</h3>
-      <button @click="confirm">Ja</button>
-      <button @click="confirmationOff">Nee</button>
+      <VueButton tekst="Ja" @click.native="confirm"/>
+      <VueButton tekst="Nee" @click.native="confirmationOff"/>
     </div>
   </div>
 </template>
 
 <script>
+import VueButton from "@/components/VueButton";
+
 export default {
   name: "ConfirmationMenu",
+  components: {
+    VueButton
+  },
   props: {
     dingAanTePassen: String,
     showConfirmation: Boolean,
@@ -48,15 +53,9 @@ export default {
     border: 3px solid #000;
     box-shadow: 0 0 15px black;
 
-    button {
-      padding: 10px 15px;
-      border-radius: 5px;
+    #vue-button {
       margin: 5px;
-      cursor: pointer;
-      font-size: 1em;
-      &:hover {
-        box-shadow: 0 0 5px black;
-      }
+      width: 100px;
     }
   }
 }
