@@ -70,22 +70,23 @@ export default {
 
 section {
   display: flex;
-  border: 4px solid #402E32;
-  border-radius: 15px;
+  border-radius: 10px;
+  border: 2px solid #402E32;
   overflow: hidden;
-  margin: 3rem 150px;
-  box-shadow: 0 0 15px #402E32;
+  margin: 3rem 200px;
+  box-shadow: 0 0 5px #402E32;
+  background-color: #fdfdfd;
   img {
+    flex: 1 1;
     object-fit: contain;
-    background-color: #eee;
     max-width: 300px;
     padding: 10px;
     height: auto;
-    border-right: 4px solid #402E32;
+    border-right: 2px solid #402E32;
   }
 
   .infoVakje {
-    flex: 1 1 500px;
+    flex: 1 1 100%;
     display: flex;
     flex-direction: column;
 
@@ -133,9 +134,8 @@ section {
     img {
       order: 2;
       border-right: none;
-      border-left: 1px solid #000;
+      border-left: 2px solid #402E32;
     }
-
     .infoVakje {
       order: 1;
     }

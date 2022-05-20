@@ -10,14 +10,11 @@
 
       <div>
         <div class="counter">
-          <label for="aantal">Aantal ingredienten: </label>
+          <label for="aantal">Ingrediënten: </label>
           <input type="number" id="aantal" min="0" max="10" v-model="aantalIngr">
         </div>
         <div class="ingr-list">
-          <div v-for="n in parseInt(aantalIngr)" :key="n" class="vakje">
-            <label for="ingrVakje">{{ n }}: </label>
-            <input type="text" v-model="nieuweIngredienten[n - 1]" id="ingrVakje">
-          </div>
+            <input v-for="n in parseInt(aantalIngr)" :key="n" type="text" v-model="nieuweIngredienten[n - 1]" id="ingrVakje" :placeholder="'ingrediënt ' + n">
         </div>
       </div>
 
@@ -122,16 +119,13 @@ export default {
   }
 
   .ingr-list {
+    height: 200px;
     display: flex;
     flex-wrap: wrap;
-    .vakje {
-      flex: 0 1 calc(50% - 5px);
-      display: flex;
-      align-items: center;
-      padding: 5px;
-      input {
-        max-width: 150px;
-      }
+    align-items: start;
+    input {
+      flex: 0 1 calc(50% - 10px);
+      margin: 5px;
     }
   }
 }
