@@ -3,9 +3,12 @@
     <div class="removeField">
       <h2>Welk gerecht wil je verwijderen?</h2>
       <div class="button-list">
-        <VueButton :tekst="gerecht.name" v-for="gerecht in gerechten" :key="gerecht" @click.native="confirmMenu(gerecht.name)"/>
+        <VueButton :tekst="gerecht.name" v-for="gerecht in gerechten" :key="gerecht"
+                   @click.native="confirmMenu(gerecht.name)"/>
       </div>
-      <ConfirmationMenu :zin="gerechtTeVerwijderen + ' definitief verwijderen?'" :dingAanTePassen="gerechtTeVerwijderen" :showConfirmation="showConfirmation" @confirmationOff="confirmOff" @confirmAction="removeGerecht"/>
+      <ConfirmationMenu :zin="gerechtTeVerwijderen + ' definitief verwijderen?'" :dingAanTePassen="gerechtTeVerwijderen"
+                        :showConfirmation="showConfirmation" @confirmationOff="confirmOff"
+                        @confirmAction="removeGerecht"/>
     </div>
   </div>
 
@@ -62,31 +65,61 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+
+  .removeField {
+    font-family: sans-serif;
+    background-color: #eee;
+    padding: 15px;
+    width: 80vw;
+    max-height: 75vh;
+    margin: 25vh auto;
+    overflow-y: scroll;
+    border-radius: 15px;
+    border: 3px solid #000;
+    box-shadow: 0 0 15px #000;
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .button-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      #vue-button {
+        flex: 0 1 calc(100% - 10px);
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
 
-.removeField {
-  font-family: sans-serif;
-  background-color: #eee;
-  padding: 15px;
-  width: 25vw;
-  max-height: 75vh;
-  margin: 25vh auto;
-  border-radius: 25px;
-  border: 3px solid #000;
-  box-shadow: 0 0 15px #000;
-  overflow: auto;
 
-  h2 {
-    margin-bottom: 15px;
+@media screen and (min-width: 500px) {
+  .backdrop {
+    .removeField {
+      width: 60vw;
+
+      .button-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        #vue-button {
+          flex: 0 1 60%;
+        }
+      }
+    }
   }
+}
 
-  .button-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+@media screen and (min-width: 700px) {
+  .backdrop .removeField {
+    width: 450px;
+
     #vue-button {
-      flex: 0 1 75%;
-      margin: 5px;
+      flex: 0 1 60%;
     }
   }
 }

@@ -107,24 +107,30 @@ export default {
 
 <style lang="scss" scoped>
 
-#gerechtenView {
-  position: relative;
+h1 {
+  font-size: 2.25em;
+  margin-bottom: 10px;
+  border-bottom: 4px solid #402E32;
+}
 
-  h1 {
-    font-size: 2.25em;
-    margin-bottom: 10px;
-    border-bottom: 4px solid #402E32;
+ul {
+  list-style-type: none;
+  li {
+    margin: 10px;
   }
+}
 
+@media screen and (min-width: 350px){
   ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
+
     li {
       margin: 0 10px;
     }
   }
-}
 
+}
 
 </style>

@@ -96,7 +96,7 @@ export default {
     border-radius: 10px;
     border: 2px solid #402E32;
     overflow: hidden;
-    margin: 10px;
+    margin: 20px;
     box-shadow: 0 0 5px #402E32;
     background-color: #fdfdfd;
 
