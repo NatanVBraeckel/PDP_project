@@ -19,7 +19,7 @@ export default {
         {
           name: 'Rijst met italiaanse saus',
           ingredienten: [
-            'rijst', 'italiaanse saus', 'mozeralla', 'drie kleuren paprika',
+            'rijst', 'italiaanse tomatensaus', 'mozzarella', 'gele paprika', 'groen paprika', 'rode paprika',
           ],
           image: {
             src: require('@/assets/rijst_italiaanse.jpg'),
@@ -30,13 +30,13 @@ export default {
           isFavorite: false
         },
         {
-          name: 'Rijst met zoetzure saus',
+          name: 'Witloofrisotto  met spekjes',
           ingredienten: [
-            'rijst', 'zoetzure saus', 'kip stukjes'
+            'risottorijst', 'witloof', 'spekblokjes', 'groentebouillon'
           ],
           image: {
             src: require('@/assets/potlogo.svg'),
-            alt: 'rijstmetsaus'
+            alt: 'witloofrisotto'
           },
           isVeggie: false,
           categorie: 'rijst',
@@ -45,7 +45,7 @@ export default {
         {
           name: 'Chili con carne',
           ingredienten: [
-            'farfalle', 'bonen in tomatensaus', 'nog tomatensaus', 'gele paprika', 'gehakt'
+            'farfalle', 'tomatensaus', 'witte bonen', 'gele paprika', 'gehakt'
           ],
           image: {
             src: require('@/assets/potlogo.svg'),
@@ -56,13 +56,13 @@ export default {
           isFavorite: false
         },
         {
-          name: 'Rigatoni met aubergine parmezaanse kaas',
+          name: 'Rigatoni met aubergine',
           ingredienten: [
             'rigatoni', 'tomatensaus', 'aubergine', 'rode paprika', 'parmezaanse kaas',
           ],
           image: {
             src: require('@/assets/potlogo.svg'),
-            alt: 'rigatoni met aubergine'
+            alt: 'rigatoni aubergine'
           },
           isVeggie: true,
           categorie: 'pasta',

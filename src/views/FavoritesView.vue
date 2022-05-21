@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Favoriete gerechten</h1>
+    <h2 v-if="favoriteGerechten.length < 1">Je hebt geen favoriete gerechten</h2>
     <GerechtenLus :gerechten="favoriteGerechten" :showRijst="true" :showPasta="true" :showVeggie="false" :confirm-bij-favorite="true"
                   @toggleFavorite="toggleFavorite" @confirmFavorite="confirmFavorite">
       <ConfirmationMenu :zin="confirmName + ' uit de favorietenlijst halen?'" :ding-aan-te-passen="confirmName" :show-confirmation="showConfirmation" @confirmationOff="confirmOff" @confirmAction="removeFavorite"/>

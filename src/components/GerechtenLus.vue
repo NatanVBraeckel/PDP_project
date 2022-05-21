@@ -137,7 +137,7 @@ export default {
 
           li {
             background-color: lightgray;
-            flex: 1 1 calc(50% - 20px);
+            flex: 0 1 calc(50% - 20px);
             padding: 15px;
             border: 1px solid #000;
             border-radius: 15px;
@@ -181,6 +181,7 @@ svg {
       margin: 50px 200px;
 
       img {
+        object-fit: contain;
         max-width: 300px;
         height: auto;
         border-right: 2px solid #402E32;
