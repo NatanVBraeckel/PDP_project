@@ -1,24 +1,22 @@
 <template>
-  <div class="backdrop" @click="confirmationOff" v-if="showConfirmation">
-    <div class="confirmationMenu">
-      <h3>{{ zin }}</h3>
-      <VueButton tekst="Ja" @click.native="confirm"/>
-      <VueButton tekst="Nee" @click.native="confirmationOff"/>
-    </div>
-  </div>
+  <VueModal :text="zin" @modalOff="confirmationOff">
+    <VueButton tekst="Ja" @click.native="confirm"/>
+    <VueButton tekst="Nee" @click.native="confirmationOff"/>
+  </VueModal>
 </template>
 
 <script>
 import VueButton from "@/components/VueButton";
+import VueModal from "@/components/VueModal";
 
 export default {
   name: "ConfirmationMenu",
   components: {
-    VueButton
+    VueButton,
+    VueModal
   },
   props: {
     dingAanTePassen: String,
-    showConfirmation: Boolean,
     zin: String
   },
   methods: {
@@ -36,30 +34,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .backdrop {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  .confirmationMenu {
-    padding: 15px;
-    max-width: 500px;
-    font-family: sans-serif;
-    background-color: #efefef;
-    margin: 15px auto;
-    border-radius: 25px;
-    border: 3px solid #000;
-    box-shadow: 0 0 15px black;
-
-    #vue-button {
-      margin: 5px;
-      width: 100px;
-    }
+  background-color: rgba(0, 0, 0, 0.25);
+  align-items: start;
+  &::v-deep .modal {
+    margin-top: 5vh;
   }
 }
 
+#vue-button {
+  margin: 5px;
+  width: 100px;
+}
 
 
 </style>

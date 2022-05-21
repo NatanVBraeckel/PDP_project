@@ -78,6 +78,13 @@ export default {
 
 <style lang="scss" scoped>
 
+  .backdrop {
+    align-items: start;
+    &::v-deep .modal {
+      margin-top: 25vh;
+    }
+  }
+
   #vue-button {
     margin-top: 15px;
   }
@@ -91,6 +98,7 @@ export default {
     border: 2px solid #402E32;
     border-radius: 5px;
     font-size: 1em;
+    max-width: 95%;
   }
 
   .ingr-list {

@@ -1,13 +1,14 @@
 <template>
-  <VueModal text="Verwijder Gerechten" @modalOff="removeOff">
-    <div class="button-list">
-      <VueButton :tekst="gerecht.name" v-for="gerecht in gerechten" :key="gerecht"
-                 @click.native="confirmMenu(gerecht.name)"/>
-    </div>
+  <div>
+    <VueModal text="Verwijder Gerechten" @modalOff="removeOff">
+      <div class="button-list">
+        <VueButton :tekst="gerecht.name" v-for="gerecht in gerechten" :key="gerecht"
+                   @click.native="confirmMenu(gerecht.name)"/>
+      </div>
+    </VueModal>
     <ConfirmationMenu :zin="gerechtTeVerwijderen + ' definitief verwijderen?'" :dingAanTePassen="gerechtTeVerwijderen"
-                      :showConfirmation="showConfirmation" @confirmationOff="confirmOff"
-                      @confirmAction="removeGerecht"/>
-  </VueModal>
+                      v-if="showConfirmation" @confirmationOff="confirmOff" @confirmAction="removeGerecht"/>
+  </div>
 </template>
 
 <script>
