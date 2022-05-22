@@ -35,7 +35,7 @@ export default {
             'risottorijst', 'witloof', 'spekblokjes', 'groentebouillon'
           ],
           image: {
-            src: require('@/assets/potlogo.svg'),
+            src: require('@/assets/witloof_risotto.jpg'),
             alt: 'witloofrisotto'
           },
           isVeggie: false,
@@ -48,7 +48,7 @@ export default {
             'farfalle', 'tomatensaus', 'witte bonen', 'gele paprika', 'gehakt'
           ],
           image: {
-            src: require('@/assets/potlogo.svg'),
+            src: require('@/assets/chili.jpg'),
             alt: 'chili con carne'
           },
           isVeggie: false,
