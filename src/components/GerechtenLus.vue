@@ -137,7 +137,7 @@ export default {
 
           li {
             background-color: lightgray;
-            flex: 0 1 calc(50% - 20px);
+            flex: 1 1 calc(50% - 20px);
             padding: 15px;
             border: 1px solid #000;
             border-radius: 15px;
@@ -192,6 +192,9 @@ svg {
         h2 {
           flex: 0 1 10%;
           border-top: none;
+        }
+        .ingredienten ul li {
+          flex-grow: 0;
         }
       }
 
