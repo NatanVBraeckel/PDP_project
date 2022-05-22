@@ -1,4 +1,4 @@
-# PDP project Natan Van Braeckel
+# POP project Natan Van Braeckel
 
 ## App gebruiken:
 
